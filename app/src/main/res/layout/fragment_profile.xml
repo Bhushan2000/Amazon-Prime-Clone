@@ -4,6 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="@drawable/button_background"
     android:orientation="vertical"
     tools:context=".ProfileFragment">
 
@@ -17,13 +18,13 @@
             android:layout_width="50dp"
             android:layout_height="50dp"
             android:layout_margin="16dp"
-            android:src="@drawable/ic_baseline_account_circle_24" />
+            android:src="@drawable/ic_outline_account_circle_24" />
 
         <TextView
             android:id="@+id/textView20"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginTop="24dp"
+            android:layout_marginTop="32dp"
             android:layout_toRightOf="@id/imageView2"
             android:text="Name"
             android:textColor="@android:color/white"
@@ -34,7 +35,7 @@
             android:id="@+id/imageView4"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginTop="24dp"
+            android:layout_marginTop="32dp"
             android:layout_toRightOf="@id/textView20"
             android:src="@drawable/ic_baseline_keyboard_arrow_down_24" />
 
@@ -43,7 +44,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_alignParentEnd="true"
-            android:layout_marginTop="24dp"
+            android:layout_marginTop="32dp"
             android:layout_marginEnd="16dp"
             android:src="@drawable/ic_outline_settings_24" />
     </RelativeLayout>
@@ -52,6 +53,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_gravity="center"
+        android:background="@drawable/button_background"
 
         app:tabIndicatorColor="@android:color/white"
         app:tabSelectedTextColor="@android:color/white">

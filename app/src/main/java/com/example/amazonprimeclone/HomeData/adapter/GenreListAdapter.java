@@ -59,7 +59,7 @@ public class GenreListAdapter extends ArrayAdapter<Genre> {
                 Constants.QueryDefaultVal.LANG,
                 Constants.QueryDefaultVal.REGION, Constants.QueryDefaultVal.SORT_BY,
                 Constants.QueryDefaultVal.CERT_COUNTRY, Constants.QueryDefaultVal.PAGE_NO,
-                2017, Collections.singletonList(Genre.GenreList.get(position).getId()));
+                2020, Collections.singletonList(Genre.GenreList.get(position).getId()));
 
         call.enqueue(new Callback<DiscoverResult>() {
             @Override

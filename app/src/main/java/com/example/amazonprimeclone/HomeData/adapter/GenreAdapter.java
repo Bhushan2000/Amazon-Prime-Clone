@@ -64,7 +64,7 @@ public class GenreAdapter extends RecyclerView.Adapter<GenreAdapter.GenreVH> {
                     Constants.QueryDefaultVal.LANG,
                     Constants.QueryDefaultVal.REGION, Constants.QueryDefaultVal.SORT_BY,
                     Constants.QueryDefaultVal.CERT_COUNTRY, Constants.QueryDefaultVal.PAGE_NO,
-                    2017, Collections.singletonList(genre.getId()));
+                    2020, Collections.singletonList(genre.getId()));
 
 
             //            test(call, genre);

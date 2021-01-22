@@ -17,6 +17,7 @@ import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
+import android.widget.TextView;
 
 import com.example.amazonprimeclone.HomeData.adapter.GenreAdapter;
 import com.example.amazonprimeclone.HomeData.model.Genre;
@@ -76,6 +77,7 @@ public class FindFragment extends Fragment {
 
     androidx.appcompat.widget.SearchView searchView;
     ImageView mic;
+    TextView tvSeeMoreLanguages, tvSeeMoreGenres;
 
 
     @Override
@@ -85,6 +87,8 @@ public class FindFragment extends Fragment {
         View view = inflater.inflate(R.layout.fragment_find, container, false);
         searchView = view.findViewById(R.id.searchView);
         mic = view.findViewById(R.id.mic);
+        tvSeeMoreLanguages = view.findViewById(R.id.tvSeeMoreLanguages);
+        tvSeeMoreGenres = view.findViewById(R.id.tvSeeMoreGenre);
 
 
         languagesRecycler = view.findViewById(R.id.languagesRecycler);
@@ -110,6 +114,41 @@ public class FindFragment extends Fragment {
             }
         });
 
+
+        tvSeeMoreLanguages.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                List<GenreOrLanguages> genreOrLanguages = new ArrayList<>();
+                genreOrLanguages.add(new GenreOrLanguages("Telugu"));
+                genreOrLanguages.add(new GenreOrLanguages("Kannda"));
+                genreOrLanguages.add(new GenreOrLanguages("Malayalam"));
+                genreOrLanguages.add(new GenreOrLanguages("Punjabi"));
+                genreOrLanguages.add(new GenreOrLanguages("Bangali"));
+                genreOrLanguages.add(new GenreOrLanguages("Gujrati"));
+                LanguagesAdapter languagesAdapter = new LanguagesAdapter(genreOrLanguages);
+                languagesRecycler.setAdapter(languagesAdapter);
+                languagesAdapter.notifyDataSetChanged();
+            }
+        });
+        tvSeeMoreGenres.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                List<GenreOrLanguages> genreOrLanguages = new ArrayList<>();
+                genreOrLanguages.add(new GenreOrLanguages( "Amazon Original Kids series"));
+                genreOrLanguages.add(new GenreOrLanguages( "Horror movies"));
+                genreOrLanguages.add(new GenreOrLanguages( "League of Extraordinary Women"));
+                genreOrLanguages.add(new GenreOrLanguages( "Best of World cinema"));
+                genreOrLanguages.add(new GenreOrLanguages( "Drama movies"));
+                genreOrLanguages.add(new GenreOrLanguages( "Romantic Comedies"));
+                genreOrLanguages.add(new GenreOrLanguages( "Comedy TV"));
+                genreOrLanguages.add(new GenreOrLanguages( "Best of Oscars"));
+
+                GenreListAdapter genreListAdapter = new GenreListAdapter(genreOrLanguages);
+                genreRecycler.setAdapter(genreListAdapter);
+                genreListAdapter.notifyDataSetChanged();
+
+            }
+        });
 
         return view;
 
@@ -166,6 +205,7 @@ public class FindFragment extends Fragment {
         GenreListAdapter genreListAdapter = new GenreListAdapter(genreOrLanguages);
         genreRecycler.setAdapter(genreListAdapter);
     }
+
 
 
 }

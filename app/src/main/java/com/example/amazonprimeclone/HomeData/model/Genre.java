@@ -3,9 +3,7 @@ package com.example.amazonprimeclone.HomeData.model;
 import java.util.Arrays;
 import java.util.List;
 
-/**
- * Created by sumit on 30/12/17.
- */
+
 
 public class Genre {
     private int id;

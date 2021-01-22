@@ -18,6 +18,8 @@ import android.view.ViewGroup;
 import android.widget.FrameLayout;
 import android.widget.ImageView;
 
+import com.example.amazonprimeclone.HomeData.fragmets.KidsFragment;
+import com.example.amazonprimeclone.HomeData.fragmets.MoviesFragment;
 import com.example.amazonprimeclone.HomeData.fragmets.TVShowsFragment;
 import com.google.android.material.tabs.TabLayout;
 
@@ -122,7 +124,7 @@ public class HomeFragment extends Fragment {
             public void onTabSelected(TabLayout.Tab tab) {
                 if (tab.getPosition() == 0) {
 
-                    loadFragment(new TVShowsFragment());
+                    loadFragment(new HomeFragment());
 
 
                 }
@@ -131,12 +133,12 @@ public class HomeFragment extends Fragment {
 
                 }
                 if (tab.getPosition() == 2) {
-                    loadFragment(new TVShowsFragment());
+                    loadFragment(new MoviesFragment());
 
 
                 }
                 if (tab.getPosition() == 3) {
-                    loadFragment(new TVShowsFragment());
+                    loadFragment(new KidsFragment());
 
                 }
             }

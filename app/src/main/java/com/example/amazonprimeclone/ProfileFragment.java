@@ -64,7 +64,8 @@ public class ProfileFragment extends Fragment {
             mParam2 = getArguments().getString(ARG_PARAM2);
         }
     }
-    private  SharedPreference_Config sharedPreference_config;
+
+    private SharedPreference_Config sharedPreference_config;
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
@@ -73,20 +74,24 @@ public class ProfileFragment extends Fragment {
         View view = inflater.inflate(R.layout.fragment_profile, container, false);
         sharedPreference_config = new SharedPreference_Config(getContext());
         ImageView btnLogout = view.findViewById(R.id.btnLogout);
+
+
         btnLogout.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                new MaterialAlertDialogBuilder(getContext(),R.drawable.border_background)
+
+//
+                new MaterialAlertDialogBuilder(getContext(), R.drawable.border_background)
+
 
                         .setIcon(android.R.drawable.ic_dialog_alert)
                         .setTitle("Confirmation")
                         .setMessage("Are you sure you want to logout this app?")
-                        .setPositiveButton("Yes", new DialogInterface.OnClickListener()
-                        {
+                        .setPositiveButton("Yes", new DialogInterface.OnClickListener() {
                             @Override
                             public void onClick(DialogInterface dialog, int which) {
                                 sharedPreference_config.writeLoginStatus(false);
-                                startActivity(new Intent(getContext(),RegistrationActivity.class));
+                                startActivity(new Intent(getContext(), RegistrationActivity.class));
                                 getActivity().finish();
                             }
 
@@ -97,6 +102,22 @@ public class ProfileFragment extends Fragment {
 
             }
         });
+
+
         return view;
     }
+
+    private boolean loadFragment(Fragment fragment) {
+        //switching fragment
+        if (fragment != null) {
+            getActivity().getSupportFragmentManager()
+                    .beginTransaction()
+                    .replace(getActivity().findViewById(R.id.fragment_container).getId(), fragment)
+                    .commit();
+            return true;
+        }
+        return false;
+    }
+
+
 }

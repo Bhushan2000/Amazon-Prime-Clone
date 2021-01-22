@@ -11,7 +11,7 @@ import retrofit2.converter.gson.GsonConverterFactory;
 import retrofit2.http.GET;
 import retrofit2.http.Query;
 
-public class ApiClient {
+public class    ApiClient {
     public static String BASE_URL = "https://api.themoviedb.org/3/";
 
     private static TheMovieDBApiInterface theMovieDBApiInterface;
@@ -50,4 +50,15 @@ public class ApiClient {
                                                  @Query("primary_release_year") Integer releaseYear,
                                                  @Query("with_genres") List<Integer> genres);
     }
+
+
+
+
+
+
+//    @GET(movie/{movie_id}/credits)
+//    Call<>
+
+
+
 }

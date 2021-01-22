@@ -2,26 +2,27 @@ package com.example.amazonprimeclone.HomeData.adapter;
 
 import android.annotation.SuppressLint;
 import android.content.Context;
- import android.view.LayoutInflater;
+import android.content.Intent;
+import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.ProgressBar;
 import android.widget.TextView;
 
+import androidx.cardview.widget.CardView;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.bumptech.glide.Glide;
 import com.bumptech.glide.load.engine.DiskCacheStrategy;
 import com.example.amazonprimeclone.HomeData.model.Movie;
+import com.example.amazonprimeclone.MovieDetails;
 import com.example.amazonprimeclone.R;
 
 
 import java.util.List;
 
-/**
- * Created by sumit on 30/12/17.
- */
+
 
 public class TrendingAdapter extends RecyclerView.Adapter<TrendingAdapter.TrendingVH>{
 
@@ -71,7 +72,7 @@ public class TrendingAdapter extends RecyclerView.Adapter<TrendingAdapter.Trendi
 
     @SuppressLint("DefaultLocale")
     @Override
-    public void onBindViewHolder(TrendingVH holder, int position) {
+    public void onBindViewHolder(final TrendingVH holder, final int position) {
 
         /* Don't do any thing if this is an empty list case */
         int viewType = getItemViewType(position);
@@ -91,6 +92,15 @@ public class TrendingAdapter extends RecyclerView.Adapter<TrendingAdapter.Trendi
 
         holder.movieTitle.setText(trendingMovieList.get(position).getTitle());
         holder.bannerNum.setText(String.format("%02d/%d", position+1, getItemCount()));
+        holder.trending_card.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(context, MovieDetails.class);
+                intent.putExtra("movie_id",trendingMovieList.get(position).getId());
+
+                context.startActivity(intent);
+            }
+        });
     }
 
     @Override
@@ -104,6 +114,8 @@ public class TrendingAdapter extends RecyclerView.Adapter<TrendingAdapter.Trendi
     }
 
     public class TrendingVH extends RecyclerView.ViewHolder{
+        CardView trending_card;
+
 
         private View view;
         private ImageView bannerImage;
@@ -118,6 +130,8 @@ public class TrendingAdapter extends RecyclerView.Adapter<TrendingAdapter.Trendi
             this.movieTitle = itemView.findViewById(R.id.movie_title);
             this.bannerNum = itemView.findViewById(R.id.banner_number);
             this.progressBar = itemView.findViewById(R.id.progress_bar);
+
+            this.trending_card = itemView.findViewById(R.id.trending_card);
         }
     }
 }

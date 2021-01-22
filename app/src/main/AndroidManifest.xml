@@ -9,11 +9,13 @@
         android:allowBackup="true"
         android:icon="@drawable/app_icon"
         android:label="@string/app_name"
+        android:resizeableActivity="false"
         android:roundIcon="@drawable/app_icon"
         android:supportsRtl="true"
-        android:resizeableActivity="false"
         android:theme="@style/AppTheme">
-        <activity android:name=".PipActivity"
+        <activity android:name=".MovieDetails"></activity>
+        <activity
+            android:name=".PipActivity"
             android:allowTaskReparenting="true"
             android:autoRemoveFromRecents="true"
             android:configChanges="screenSize|smallestScreenSize|screenLayout|orientation"
@@ -21,15 +23,17 @@
             android:launchMode="singleTask"
             android:resizeableActivity="true"
             android:screenOrientation="portrait"
-            android:supportsPictureInPicture="true"></activity>
+            android:supportsPictureInPicture="true" />
         <activity android:name=".RegistrationActivity">
+
+        </activity>
+        <activity android:name=".SplashActivity" >
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".SplashActivity"></activity>
         <activity
             android:name=".MainActivity"
             android:allowTaskReparenting="true"
@@ -40,7 +44,8 @@
             android:resizeableActivity="true"
             android:screenOrientation="portrait"
             android:supportsPictureInPicture="true"
-            android:taskAffinity=".ui.videodetail.VodDetailActivity" />
+            android:taskAffinity=".ui.videodetail.VodDetailActivity"
+            android:windowSoftInputMode="adjustPan" />
     </application>
 
 </manifest>

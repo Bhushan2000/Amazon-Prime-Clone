@@ -8,17 +8,17 @@
 
     <item
         android:id="@+id/navigation_find"
-        android:icon="@drawable/ic_baseline_search_24"
+        android:icon="@drawable/find_selector"
         android:title="@string/title_find" />
 
     <item
         android:id="@+id/navigation_downloads"
-        android:icon="@drawable/ic_baseline_arrow_downward_24"
+        android:icon="@drawable/download_selector"
         android:title="@string/title_downloads" />
 
     <item
         android:id="@+id/navigation_profile"
-        android:icon="@drawable/ic_baseline_account_circle_24"
+        android:icon="@drawable/profile_selector"
         android:title="@string/title_profile" />
 
 </menu>
