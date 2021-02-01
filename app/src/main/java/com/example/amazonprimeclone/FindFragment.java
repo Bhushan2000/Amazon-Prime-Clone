@@ -78,6 +78,7 @@ public class FindFragment extends Fragment {
     androidx.appcompat.widget.SearchView searchView;
     ImageView mic;
     TextView tvSeeMoreLanguages, tvSeeMoreGenres;
+    private static final int VERTICAL_ITEM_SPACE = 48;
 
 
     @Override
@@ -170,8 +171,10 @@ public class FindFragment extends Fragment {
                 LinearLayoutManager.VERTICAL, false));
         /* for smooth scrolling */
         languagesRecycler.setNestedScrollingEnabled(false);
-        DividerItemDecoration dividerItemDecoration = new DividerItemDecoration(getContext(), DividerItemDecoration.HORIZONTAL);
-        languagesRecycler.addItemDecoration(dividerItemDecoration);
+
+        //add ItemDecoration
+
+        languagesRecycler.addItemDecoration(new DividerItemDecoration(getContext(),DividerItemDecoration.HORIZONTAL));
 
 
         LanguagesAdapter languagesAdapter = new LanguagesAdapter(genreOrLanguages);

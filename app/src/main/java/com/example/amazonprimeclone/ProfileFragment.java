@@ -7,16 +7,29 @@ import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
 
+import androidx.annotation.NonNull;
 import androidx.fragment.app.Fragment;
 
 import android.preference.PreferenceManager;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.ImageView;
+import android.widget.ProgressBar;
+import android.widget.TextView;
 
+import com.google.android.gms.tasks.OnCompleteListener;
+import com.google.android.gms.tasks.Task;
 import com.google.android.material.dialog.MaterialAlertDialogBuilder;
+import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.auth.FirebaseUser;
+import com.google.firebase.firestore.DocumentReference;
+import com.google.firebase.firestore.DocumentSnapshot;
+import com.google.firebase.firestore.FirebaseFirestore;
+
+import static android.content.ContentValues.TAG;
 
 /**
  * A simple {@link Fragment} subclass.
@@ -66,14 +79,64 @@ public class ProfileFragment extends Fragment {
     }
 
     private SharedPreference_Config sharedPreference_config;
+    private TextView tvName;
+    private FirebaseAuth firebaseAuth;
+    private FirebaseFirestore firebaseFirestore;
+    ProgressBar progressBar;
+    ImageView btnLogout;
+
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
         View view = inflater.inflate(R.layout.fragment_profile, container, false);
+
         sharedPreference_config = new SharedPreference_Config(getContext());
+
+        // firebase instances
+        firebaseAuth = FirebaseAuth.getInstance();
+        FirebaseUser user = firebaseAuth.getCurrentUser();
+        firebaseFirestore = FirebaseFirestore.getInstance();
+
+        // bind views
+        progressBar = view.findViewById(R.id.progressBar3);
+        tvName = view.findViewById(R.id.tvName);
         ImageView btnLogout = view.findViewById(R.id.btnLogout);
+
+
+
+        DocumentReference docRef = firebaseFirestore.collection("USERS").document(user.getUid());
+        docRef.get().addOnCompleteListener(new OnCompleteListener<DocumentSnapshot>() {
+            @Override
+            public void onComplete(@NonNull Task<DocumentSnapshot> task) {
+                if (task.isSuccessful()) {
+                    DocumentSnapshot document = task.getResult();
+                    if (document.exists()) {
+                        progressBar.setVisibility(View.GONE);
+
+                        Log.d(TAG, "DocumentSnapshot data: " + document.getData());
+                        String name = document.get("name").toString();
+                        String email = document.get("email").toString();
+
+
+                        tvName.setText(name);
+
+                    } else {
+                        progressBar.setVisibility(View.GONE);
+                        Log.d(TAG, "No such document");
+
+                    }
+                } else {
+                    progressBar.setVisibility(View.GONE);
+                    Log.d(TAG, "get failed with ", task.getException());
+
+                }
+            }
+        });
+
+
+
 
 
         btnLogout.setOnClickListener(new View.OnClickListener() {

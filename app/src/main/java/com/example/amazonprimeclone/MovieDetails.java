@@ -100,7 +100,7 @@ public class MovieDetails extends AppCompatActivity {
         // Toast.makeText(this,id,Toast.LENGTH_LONG).show();
         AndroidNetworking.get("https://api.themoviedb.org/3/movie/{movie_id}")
                 .addPathParameter("movie_id", "464052")
-                .addQueryParameter("api_key", "d133f391f5157ae9db79e26771ec314b")
+                .addQueryParameter("api_key", getString(R.string.api_key))
                 .addQueryParameter("language", "en-US")
                 .setTag("test")
                 .setPriority(Priority.LOW)
@@ -158,7 +158,7 @@ public class MovieDetails extends AppCompatActivity {
     private void setCreditData() {
         AndroidNetworking.get("https://api.themoviedb.org/3/credit/{credit_id}")
                 .addPathParameter("credit_id", "5d61847554f6eb00149ba7b1")
-                .addQueryParameter("api_key", "d133f391f5157ae9db79e26771ec314b")
+                .addQueryParameter("api_key",getString(R.string.api_key))
                 .addQueryParameter("language", "en-US")
                 .setTag("test")
                 .setPriority(Priority.LOW)

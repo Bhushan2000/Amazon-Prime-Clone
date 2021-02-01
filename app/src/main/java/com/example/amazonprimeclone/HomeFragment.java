@@ -73,7 +73,6 @@ public class HomeFragment extends Fragment {
 
     private FrameLayout frameLayout;
     private TabLayout tabLayout;
-    private Toolbar toolbar;
     private ImageView amazonLogo;
     ActionBar actionBar;
 

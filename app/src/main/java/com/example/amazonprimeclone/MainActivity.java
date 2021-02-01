@@ -22,12 +22,13 @@ import android.view.MenuItem;
 import android.widget.FrameLayout;
 import android.widget.Toast;
 
+import com.example.amazonprimeclone.HomeData.fragmets.HomeTabFragment;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 import com.google.android.material.tabs.TabLayout;
 
 public class MainActivity extends AppCompatActivity implements BottomNavigationView.OnNavigationItemSelectedListener {
     ActionBar actionBar;
-
+    BottomNavigationView navigation;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -40,7 +41,7 @@ public class MainActivity extends AppCompatActivity implements BottomNavigationV
         loadFragment(new HomeFragment());
 
         //getting bottom navigation view and attaching the listener
-        BottomNavigationView navigation = findViewById(R.id.navigation);
+        navigation = findViewById(R.id.navigation);
 
         navigation.setOnNavigationItemSelectedListener(this);
 
@@ -90,44 +91,20 @@ public class MainActivity extends AppCompatActivity implements BottomNavigationV
     }
 
 
-    private boolean doubleBackToExitPressedOnce;
-    private Handler mHandler = new Handler();
-
-    private final Runnable mRunnable = new Runnable() {
-        @Override
-        public void run() {
-            doubleBackToExitPressedOnce = false;
-        }
-    };
-
-    @Override
-    protected void onDestroy() {
-        super.onDestroy();
-
-        if (mHandler != null) {
-            mHandler.removeCallbacks(mRunnable);
-        }
-    }
 
 
 
     @Override
     public void onBackPressed() {
 
-        if (doubleBackToExitPressedOnce) {
 
+        if (navigation.getSelectedItemId() == R.id.navigation_home) {
             super.onBackPressed();
-            return;
+        } else {
+            loadFragment(new HomeFragment());
+            navigation.setSelectedItemId(R.id.navigation_home);
+
         }
 
-        this.doubleBackToExitPressedOnce = true;
-        Toast.makeText(this, "Please click BACK again to exit", Toast.LENGTH_SHORT).show();
-
-        mHandler.postDelayed(mRunnable, 2000);
-
-
-
     }
-
-
 }

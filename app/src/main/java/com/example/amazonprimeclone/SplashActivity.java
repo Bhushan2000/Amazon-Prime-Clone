@@ -14,7 +14,7 @@ import com.google.firebase.auth.FirebaseUser;
 
 public class SplashActivity extends AppCompatActivity {
     //Thats for duration
-    static int duration = 3000;
+    static int duration = 2000;
     private FirebaseAuth mAuth;
 
     @Override
@@ -33,6 +33,8 @@ public class SplashActivity extends AppCompatActivity {
 
     public void splashscreenstart() {
 
+
+
         new Handler().postDelayed(new Runnable() {
             @Override
             public void run() {
@@ -40,6 +42,7 @@ public class SplashActivity extends AppCompatActivity {
                 Intent intent = new Intent(SplashActivity.this,RegistrationActivity.class);
                 startActivity(intent);
                 finish();
+
 
             }
         }, duration);
@@ -81,5 +84,9 @@ public class SplashActivity extends AppCompatActivity {
         }
     }
 
-
+    @Override
+    protected void onPause() {
+        super.onPause();
+        finish();
+    }
 }
